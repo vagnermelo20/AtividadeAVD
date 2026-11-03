@@ -1,6 +1,7 @@
 # Configuração do Streamlit. Descomente e ajuste conforme o projeto avançar.
 # O tema pode ser trocado pelo menu ⋮ → Settings → Choose app theme.
 
+# [IA] Claude Code – identidade visual (cores do tema "oceano")
 [theme]
 paddingTop = "0.0rem"     # espaço abaixo da barra do topo (valor entre aspas)
 font = "sans serif"       # "sans serif", "serif" ou "monospace"

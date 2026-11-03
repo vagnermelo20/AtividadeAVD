@@ -1,3 +1,4 @@
+# [IA] Claude Code – esqueleto do app.py gerado a partir do rascunho de layout (Template de Prompt)
 import altair as alt
 import pandas as pd
 import streamlit as st
@@ -16,6 +17,7 @@ df = load_data()
 # Variáveis quantitativas do estudo (mesma lista VARS_QUANT do notebook de EDA)
 VARS_QUANT = ["age", "fare", "sibsp", "parch"]
 
+# [IA] Claude Code – esqueleto da sidebar (seletor de variáveis e sliders de intervalo)
 # Sidebar: filtros (variáveis + intervalo)
 with st.sidebar:
     st.header("Filtros")
@@ -56,6 +58,7 @@ for var, (inicio, fim) in intervalos.items():
 
 st.caption(f"{len(df_filtrado)} de {len(df)} passageiros dentro dos intervalos escolhidos.")
 
+# [IA] Claude Code – identidade visual (paleta "oceano" dos gráficos)
 # Cores do tema "oceano": azul profundo para Sobreviveu, azul acinzentado claro para Não Sobreviveu
 COR_NAO_SOBREVIVEU = "#a9c4d6"
 COR_SOBREVIVEU = "#1f6f8b"
@@ -81,6 +84,8 @@ with aba_dashboard1:
 
     with col_correlacao:
         st.subheader("Correlação (Spearman)")
+
+        # [IA] Claude Code – sintaxe do heatmap de correlação em Altair
 
         if len(variaveis) < 2:
             st.warning("Selecione pelo menos 2 variáveis para calcular a correlação.")
@@ -133,6 +138,8 @@ with aba_dashboard1:
 
     with col_distribuicao:
         st.subheader("Distribuição")
+
+        # [IA] Claude Code – sintaxe dos histogramas em Altair
 
         if not variaveis:
             st.warning("Selecione pelo menos 1 variável para ver a distribuição.")
@@ -193,6 +200,7 @@ with aba_dashboard2:
     if df_filtrado.empty:
         st.warning("Nenhum passageiro dentro dos intervalos escolhidos.")
     else:
+        # [IA] Claude Code – sintaxe do gráfico de barras com clique (on_select) e dos KPIs com st.metric
         area_kpis = st.container()  # os KPIs aparecem acima, mas dependem do clique no gráfico abaixo
 
         # Taxa de sobrevivência e número de passageiros de cada grupo
@@ -251,6 +259,7 @@ with aba_dashboard2:
             kpi3.metric("Idade média", "—" if pd.isna(idade_media) else f"{idade_media:.1f} anos")
             kpi4.metric("Tarifa mediana", f"£ {selecionado['fare'].median():.2f}")
 
+        # [IA] Claude Code – sintaxe dos dois visuais em Altair ligados ao clique (faixa etária e boxplot da tarifa)
         # Os dois visuais de baixo também seguem o grupo clicado (partem de `selecionado`)
         col_faixa, col_tarifa = st.columns(2)
 
